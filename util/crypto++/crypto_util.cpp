@@ -48,18 +48,6 @@ public:
 			errMsg = "aes key invalid!!";
 			return -2;
 		}
-/*
-		unsigned int iDataLen = inData.length();
-		unsigned int iBase = iDataLen / AES::BLOCKSIZE;
-		unsigned int iMod = iDataLen % AES::BLOCKSIZE;
-
-		if (iMod)
-		{
-			const_cast<std::string&>(inData).resize((iBase + 1) * 16,
-					(char) (16 - iMod));
-		}
-
-*/
 
 		byte iv[AES::BLOCKSIZE];
 		int iResult = 0;
