@@ -77,7 +77,7 @@ public:
 
         struct _msg_struct_ s_data; 
 
-        size_t size = msgrcv(m_msgId, (void*)&s_data, MAX_LENGTH, type, IPC_NOWAIT);
+        ssize_t size = msgrcv(m_msgId, (void*)&s_data, MAX_LENGTH, type, IPC_NOWAIT);
         if(size < 0)
         {
             m_errmsg = strerror(errno);
