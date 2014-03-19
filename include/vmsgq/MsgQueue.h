@@ -54,7 +54,7 @@ public:
 
         struct _msg_struct_ s_data;
         s_data.type = type;
-        strncpy(s_data.msg, str.c_str(), str.length());
+        memcpy(s_data.msg, str.c_str(), str.length());
 
         int ret = msgsnd(m_msgId, (void*)&s_data, str.length(), IPC_NOWAIT);
         if(ret < 0)
