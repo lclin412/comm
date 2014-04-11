@@ -36,7 +36,7 @@ private:
 	void md5_decode(unsigned int *output, const unsigned char *input,
 			unsigned int len);
 public:
-	std::string md5(const std::string&input);
+	int md5(const char* cInput,int iLength,char* cOut);
 };
 }
 } //comm::util

@@ -43,19 +43,19 @@ public:
 	{
 		if (Sbox != NULL)
 		{
-			delete Sbox;
+			delete []Sbox;
 			Sbox = NULL;
 		}
 
 		if (iSbox != NULL)
 		{
-			delete iSbox;
+			delete []iSbox;
 			iSbox = NULL;
 		}
 
 		if (Rcon != NULL)
 		{
-			delete Rcon;
+			delete []Rcon;
 			Rcon = NULL;
 		}
 	}

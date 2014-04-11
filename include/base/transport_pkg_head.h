@@ -3,33 +3,42 @@
 
 #include <stdint.h>
 
-#define  SOOF          1179602771
+#define  SOOF     1397706566
 
 typedef enum
 {
-  CLIENT2SERVER_REQ = 115,   //¿Í»§¶ËÇëÇó·şÎñÆ÷ÏûÏ¢
-  SERVER2CLIENT_RES = 511,   //·şÎñÆ÷ÏìÓ¦¿Í»§¶ËÏûÏ¢
-  SERVER2CLIENT_REQ = 116,   //·şÎñÆ÷ÇëÇó¿Í»§¶ËÏûÏ¢
-  CLIENT2SERVER_RES = 611,   //¿Í»§¶ËÏìÓ¦·şÎñ¶ËÏûÏ¢
+  CLIENT2SERVER_REQ = 115,   //å®¢æˆ·ç«¯è¯·æ±‚æœåŠ¡å™¨æ¶ˆæ¯
+  SERVER2CLIENT_RES = 511,   //æœåŠ¡å™¨å“åº”å®¢æˆ·ç«¯æ¶ˆæ¯
+  SERVER2CLIENT_REQ = 116,   //æœåŠ¡å™¨è¯·æ±‚å®¢æˆ·ç«¯æ¶ˆæ¯
+  CLIENT2SERVER_RES = 611,   //å®¢æˆ·ç«¯å“åº”æœåŠ¡ç«¯æ¶ˆæ¯
 } MSG_TYPE;
+
+typedef enum
+{
+  SERVICE_MSG = 10000,       //msgåŸŸä¸šåŠ¡
+  SERVICE_MY  = 10001,		   //myåŸŸä¸šåŠ¡
+  SERVICE_IM  = 10002,		   //imåŸŸä¸šåŠ¡
+  SERVICE_RPC = 10003,       //RPCä¸šåŠ¡
+} SERVICE_CODE;
 
 #pragma pack(push, 1)
 
 typedef struct tagTRANSPORT_PKG_HEAD
 {
-  uint32_t magic_quote;       //SOOFµÄ×Ö·û´®
-  uint16_t version;           //°æ±¾
-  uint16_t msg_type;          //ÏûÏ¢ÀàĞÍ
-  uint16_t service_id;        //·şÎñid
-  uint8_t  call_level;        //·şÎñµ÷ÓÃµÄÉî¶È
-  uint64_t session_id;        //»á»°id
-  uint32_t route_id;          //Â·ÓÉid
-  uint32_t reserve;           //±£Áô
-  uint32_t length;            //Ğ­ÒéÌå³¤¶È
+  uint32_t magic_quote;       //SOOFçš„å­—ç¬¦ä¸²
+  uint16_t version;           //ç‰ˆæœ¬
+  uint16_t msg_type;          //æ¶ˆæ¯ç±»å‹
+  uint16_t service_id;        //æœåŠ¡id
+  uint8_t  call_level;        //æœåŠ¡è°ƒç”¨çš„æ·±åº¦
+  uint64_t session_id;        //ä¼šè¯id
+  uint32_t route_id;          //è·¯ç”±id
+  uint32_t reserve;           //ä¿ç•™
   uint32_t squenceid;         //squenceid
+  uint64_t ignore_session_id; //å¿½ç•¥ä¼šè¯id
+  uint8_t  reserve_head[21];  //ä¿ç•™å¤´
+  uint32_t length;            //åè®®ä½“é•¿åº¦
 } TRANSPORT_PKG_HEAD, *PTRANSPORT_PKG_HEAD;
 
 #pragma pack(pop)
 
 #endif
-
